@@ -185,7 +185,6 @@ public class QueryActivity extends Activity implements Observer {
 				this.handler = new JsonHttpResponseHandler() {
 					@Override
 					public void onSuccess(JSONObject response) {
-						Log.d("DELAYS", response.toString());
 						String[] outcomes = getResources().getStringArray(R.array.txtDelayLabels);
 						try {
 							int delaySeverityIndex = FlightStatsClient.getDelayIndex(response);
@@ -227,8 +226,5 @@ public class QueryActivity extends Activity implements Observer {
 	    	startActivity(i);
 	    	finish();
 		} 
-		
-		// Otherwise, go back to the starting activity and show an error
-		
 	}
 }
