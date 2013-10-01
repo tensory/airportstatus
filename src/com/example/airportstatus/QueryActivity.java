@@ -219,7 +219,7 @@ public class QueryActivity extends Activity implements Observer {
 		// is the one that signals success
 		if (bundle.containsKey("success")) {
 			Intent i = new Intent(this, StatusListActivity.class);
-			bundle.putString("origin", currentLocation.toString());
+			bundle.putString("origin", TravelTimeEstimate.getCoordinates(currentLocation));
 			bundle.putString("airport_code", airportCode);
 			bundle.putString("airport_index", airportIndex);
 			i.putExtra("data", bundle);
