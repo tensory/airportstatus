@@ -22,3 +22,10 @@ This is a convenience list of airports that the user has already favorited.
 
 ### Search
 This screen contains a simple search bar for a new airport. The search bar auto-suggests completions.  
+
+Screenshots
+-----------
+![Main screen](/res/screenshots/loading.png "Loading")
+![Airport detail](/res/screenshots/status.png "Status")
+![Favorites](/res/screenshots/saved.png "Saved Airports")
+![Search](/res/screenshots/search.png "Search")
