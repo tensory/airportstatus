@@ -15,6 +15,9 @@ public class LocationPreferences {
 	public static final String PREFS_NAME = "AirportStatusPrefs";
 	public static final String PREFS_LATITUDE = "LAT";
 	public static final String PREFS_LONGITUDE= "LON";
+	public static final String PREFS_AIRPORT_CODE = "AIRPORT_CODE";
+	public static final String PREFS_AIRPORT_INDEX = "AIRPORT_INDEX";
+	
 	public static final int TIMER_PERIOD = 20000;
 	LocationResult locationResult;
 	LocationManager manager;
@@ -150,5 +153,27 @@ public class LocationPreferences {
 		} catch(Exception e) {
 			throw new Exception("No location preferences have been set");
 		}
+	}
+	
+	private static String getAirportCode(Context context) {
+		SharedPreferences locationPrefs = context.getSharedPreferences(PREFS_NAME, android.content.Context.MODE_PRIVATE);
+		return locationPrefs.getString(PREFS_AIRPORT_CODE, null);
+	}
+	
+	private static int getAirportIndex(Context context) {
+		SharedPreferences locationPrefs = context.getSharedPreferences(PREFS_NAME, android.content.Context.MODE_PRIVATE);
+		return locationPrefs.getInt(PREFS_AIRPORT_INDEX, -1);
+	}
+	
+	public static Airport getAirport(Context context) throws Exception {
+		String airport_code = getAirportCode(context);
+		int airport_index = getAirportIndex(context);
+		if (airport_code == null) {
+			throw new Exception("No Airport Code");
+		}
+		if (airport_index == -1) {
+			throw new Exception("No Airport Index");
+		}
+		return new Airport(airport_code, airport_index);
 	}
 }

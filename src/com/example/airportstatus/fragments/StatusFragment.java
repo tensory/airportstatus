@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.example.airportstatus.Airport;
 import com.example.airportstatus.R;
 import com.example.airportstatus.StatusKeys;
+import com.example.airportstatus.StatusListActivity;
 import com.example.airportstatus.models.Favorite;
 
 
@@ -30,8 +31,6 @@ public class StatusFragment extends Fragment {
 	TextView delays;
 	TextView weather;
 	String code;
-	Integer airportIndex;
-	Bundle intentData;
 	ImageView favoriteStatus;
 	boolean isFavorited;
 	Button btnDrivingTime;
@@ -47,9 +46,14 @@ public class StatusFragment extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		intentData = getActivity().getIntent().getBundleExtra("data");
-		code = intentData.getString("airport_code").toUpperCase();
-		airportIndex = Integer.parseInt(intentData.getString("airport_index"));
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		if (getAirportCode() == "")
+			return;
+		code = getAirportCode();
 		setupViews();
 		setTemplateData(getActivity().getIntent());
 	}
@@ -62,11 +66,11 @@ public class StatusFragment extends Fragment {
 		btnDrivingTime.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_dark));
 		btnTransitTime.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_dark));
 		btnDelays.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
-		String airportName = new ArrayList<String>(Airport.IATA_CODES.keySet()).get(airportIndex);
+		String airportName = new ArrayList<String>(Airport.IATA_CODES.keySet()).get(getAirportIndex());
 		((TextView)getActivity().findViewById(R.id.tvAirportName))
 		  .setText(airportName);
 		((TextView)getActivity().findViewById(R.id.tvBigAirportCode)).setText(code);
-		String website = Airport.WEBSITES.get(airportIndex);
+		String website = Airport.WEBSITES.get(getAirportIndex());
 		String formattedWebsite = "<a href='http://"+website+"'>"+website+"</a>";
 		TextView tvWebsite = ((TextView)getActivity().findViewById(R.id.tvWebsite));
 		tvWebsite.setText(Html.fromHtml(formattedWebsite));
@@ -75,6 +79,22 @@ public class StatusFragment extends Fragment {
 		delays = (TextView) getActivity().findViewById(R.id.tvDelays);
 		favoriteStatus = (ImageView) getActivity().findViewById(R.id.ivFavorite);
  	}
+	
+	private StatusListActivity getStatusListActivity() {
+		return (StatusListActivity) getActivity();
+	}
+	
+	private Bundle getBundleData()  {
+		return getActivity().getIntent().getBundleExtra("data");
+	}
+	
+	private String getAirportCode() {
+		return getStatusListActivity().getAirportCode();
+	}
+	
+	private Integer getAirportIndex() {
+		return getStatusListActivity().getAirportIndex();
+	}
 	
 	private void setTemplateData(Intent intent) {
 		try {

@@ -36,6 +36,7 @@
     <string name="action_search">Search</string>
     <string name="title_activity_landing">Airport Status</string>
     <string name="txtErrorSavedEmpty">No airports are in your favorites yet.</string>
-    <string name="txtLoadingAirports">Finding Nearby Airports</string>
+    <string name="txtLoadingAirports">Getting location&#8230;</string>
+    <string name="txtErrorNoAirportSaved">No airport selected. Tap Find to search.</string>
 
 </resources>
