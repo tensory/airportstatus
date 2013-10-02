@@ -4,9 +4,7 @@ An Android app to help travelers on their way to the airport.
 
 Main screen
 -----------
-As the app loads, it will detect the user's location and default the view to a local airport.
-
-This behavior will change before the next version, so that the first view is a search interface.
+As the app loads, it attempts to perform a search for the last airport viewed. If this has not been saved, the user is redirected to the textual search interface.
 
 App activities
 --------------
