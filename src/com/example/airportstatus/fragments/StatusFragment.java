@@ -55,7 +55,7 @@ public class StatusFragment extends Fragment {
 			return;
 		code = getAirportCode();
 		setupViews();
-		setTemplateData(getActivity().getIntent());
+		setTemplateData();
 	}
 	
 	@SuppressLint({ "InlinedApi", "ResourceAsColor" })
@@ -96,18 +96,26 @@ public class StatusFragment extends Fragment {
 		return getStatusListActivity().getAirportIndex();
 	}
 	
-	private void setTemplateData(Intent intent) {
+	private void setTemplateData() {
 		try {
-			Bundle data = intent.getBundleExtra("data");
-			btnDrivingTime.setText("Driving Directions: " + data.getString(StatusKeys.TRAVEL_TIME_DRIVING));
-			btnTransitTime.setText("Transit Directions: " + data.getString(StatusKeys.TRAVEL_TIME_TRANSIT));
-			//delays.setText(data.getString(StatusKeys.DELAYS));
-			btnDelays.setText("Status: " + data.getString(StatusKeys.DELAYS));
-			weather.setText(data.getString(StatusKeys.WEATHER));
+			btnDrivingTime.setText("Driving: " + setButton(btnDrivingTime, StatusKeys.TRAVEL_TIME_DRIVING));
+			btnTransitTime.setText("Transit: " + setButton(btnTransitTime, StatusKeys.TRAVEL_TIME_TRANSIT));
+			btnDelays.setText("Status: " + getBundleData().getString(StatusKeys.DELAYS));
+			weather.setText(getBundleData().getString(StatusKeys.WEATHER));
 			
 			setFavoritedStatus();
 		} catch (Exception e) {
 			Log.e("INVALID_INTENT_EXTRA", e.getMessage());
+		}
+	}
+	
+	private String setButton(Button button, String key) {
+		if (getBundleData().getString(key) == null) {
+			button.setEnabled(false);
+			return getResources().getString(R.string.txtRoutingError);
+		} else {
+			button.setEnabled(true);
+			return getBundleData().getString(key);
 		}
 	}
 	

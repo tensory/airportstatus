@@ -164,6 +164,4 @@ public class StatusListActivity extends FragmentActivity implements TabListener 
 	public void onFavoriteAction(View v) {
 		statusFragment.onFavoriteAction(v);
 	}
-	
-	
 }
