@@ -27,7 +27,6 @@ import com.example.airportstatus.models.TravelTimeEstimate;
 
 public class StatusListActivity extends FragmentActivity implements TabListener {
 	
-	String code;
 	StatusFragment statusFragment;
 	SearchFragment searchFragment;
 	SavedFragment savedFragment;
@@ -135,7 +134,7 @@ public class StatusListActivity extends FragmentActivity implements TabListener 
 			return;
 		}
 		String origin = getIntentBundle().getString("origin");
-		launchMapIntent(TravelTimeEstimate.getDrivingMapUrl(origin, code));
+		launchMapIntent(TravelTimeEstimate.getDrivingMapUrl(origin, getAirportCode()));
 	}
 	
 	public void onClickTransitMapButton(View v) {
@@ -144,7 +143,7 @@ public class StatusListActivity extends FragmentActivity implements TabListener 
 			return;
 		}
 		String origin = getIntentBundle().getString("origin");
-		launchMapIntent(TravelTimeEstimate.getTransitMapUrl(origin, code));
+		launchMapIntent(TravelTimeEstimate.getTransitMapUrl(origin, getAirportCode()));
 	}
 	
 	private void launchMapIntent(String url) {
