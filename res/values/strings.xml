@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Airport Status</string>
+    <string name="app_name">Airport Time</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_status_list">Airport Status</string>
     <string name="airportCodeHint">Enter an airport code or city&#8230;</string>
     <string name="txtHeaderDelays">Delays</string>
     <string name="txtHeaderSecurity">Security</string>
@@ -34,7 +33,6 @@
     <string name="txtDelays3">High Risk of Delays</string>
     <string name="txtDelays4">All Flights Delayed</string>
     <string name="action_search">Search</string>
-    <string name="title_activity_landing">Airport Status</string>
     <string name="txtErrorSavedEmpty">No airports are in your favorites yet.</string>
     <string name="txtLoadingAirports">Getting location&#8230;</string>
     <string name="txtErrorNoAirportSaved">No airport selected. Tap Find to search.</string>

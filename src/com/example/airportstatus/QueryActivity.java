@@ -109,6 +109,7 @@ public class QueryActivity extends Activity implements Observer {
 			
 			@Override
 			public void execute() {
+				Log.d("Current latitude DRIVING:", String.valueOf(currentLocation.getLatitude()));
 				TravelTimeEstimate.getDrivingTime(TravelTimeEstimate.getCoordinates(currentLocation), airportCode, this.handler);
 			}
 		});
@@ -139,6 +140,8 @@ public class QueryActivity extends Activity implements Observer {
 			
 			@Override
 			public void execute() {
+				Log.d("Current latitude TRANSIT:", String.valueOf(TravelTimeEstimate.getCoordinates(currentLocation)));
+
 				TravelTimeEstimate.getTransitTime(TravelTimeEstimate.getCoordinates(currentLocation), airportCode, this.handler);
 			}
 		});
