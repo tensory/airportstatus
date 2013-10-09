@@ -23,7 +23,7 @@ This screen contains a simple search bar for a new airport. The search bar auto-
 
 Screenshots
 -----------
-![Main screen](/res/screenshots/loading.png "Loading")
-![Airport detail](/res/screenshots/status.png "Status")
-![Favorites](/res/screenshots/saved.png "Saved Airports")
-![Search](/res/screenshots/search.png "Search")
+![Main screen](https://dl.dropboxusercontent.com/u/10808663/screenshots/AirportTime/landing.png "Loading")
+![Airport detail](https://dl.dropboxusercontent.com/u/10808663/screenshots/AirportTime/status.png "Status")
+![Favorites](https://dl.dropboxusercontent.com/u/10808663/screenshots/AirportTime/saved.png "Saved Airports")
+![Search](https://dl.dropboxusercontent.com/u/10808663/screenshots/AirportTime/search.png "Search")
